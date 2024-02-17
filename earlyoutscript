@@ -1,0 +1,18 @@
+var a = new Date()
+a.setHours(1)
+a.setMinutes(45)
+a.setSeconds(0)
+a.setMilliseconds(25)
+
+var runAt = (+a) - (Date.now())
+if (runAt < 0){
+//then use the next day
+runAt += 1000*60*60*24;
+}
+
+console.log("running the eo add in " + (runAt/1000) + "seconds")
+
+setTimeout(() => {
+console.log('Added')
+window.cpm.eo.add()
+}, runAt)
